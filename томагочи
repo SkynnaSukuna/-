@@ -13,13 +13,14 @@ hunger = 50
 happiness = 50
 energy = 50
 
+
 def угадай_число():
     global points
     print("УГАДАЙ ЧИСЛО")
     print("тебе надо угадать число от 0 до 10 за 3 попытки")
     kjgmgk = False
 
-    print(pet_name,"загадывает...")
+    print(pet_name, "загадывает...")
     xqplmn = random.randint(0, 10)
     time.sleep(3)
     print("робот загадал, можем начинать")
@@ -40,6 +41,8 @@ def угадай_число():
             print("ты угадал!!")
             points += 5
             kjgmgk = True
+
+
 def орел_решка():
     global points
     print("ОРЁЛ И РЕШКА")
@@ -63,6 +66,8 @@ def орел_решка():
             points += 5
         else:
             print("увы, ты не угадал")
+
+
 def камень_ножницы_бумага():
     global points
     print("ИГРА КАМЕНЬ НОЖНИЦЫ БУМАГА")
@@ -107,13 +112,14 @@ def камень_ножницы_бумага():
                 zxcnvb = zxcnvb + 1
                 print("вы проиграли \n счёт", qweplm, "|", zxcnvb)
 
-
     if qweplm > zxcnvb:
         print("вы выйграли со счётом", qweplm, "|", zxcnvb)
         points += 5
     else:
         print("вы проиграли со счётом", qweplm, "|", zxcnvb)
         points -= 5
+
+
 def исправить():
     global hunger, happiness, energy
     if hunger > 100:
@@ -132,10 +138,20 @@ def исправить():
         energy = 0
 
 
+def пропуск():
+    print()
+    print()
+    print()
+    print()
+    print()
+    print()
+
+
 while igrat_programm == False:
-    print("Что хотите с вашим",pet,"делать?(весь список: список)")
+    print("Что хотите с вашим", pet, "делать?(весь список: список)")
     delat = input()
     if delat == "список":
+        пропуск()
         print("СПИСОК ВСЕХ КОММАНД:")
         print("кормить")
         print("очки")
@@ -146,13 +162,14 @@ while igrat_programm == False:
 
     elif delat == "кормить":
         if hunger < 91:
-            print("Вы кормите",pet_name,"...")
+            пропуск()
+            print("Вы кормите", pet_name, "...")
             time.sleep(3)
             print("Он поел...")
-            ponr =  random.randint(1,3)
+            ponr = random.randint(1, 3)
             if ponr == 1:
                 print("Ему понравилось😀 +5 очков")
-                points = points+5
+                points = points + 5
                 hunger = hunger + 20
                 happiness = happiness - 10
                 energy = energy + 10
@@ -162,7 +179,7 @@ while igrat_programm == False:
             elif ponr == 2:
                 print("Ему было пофиг... вы получаете 0 очков")
                 hunger = hunger + 20
-                happiness = happiness -10
+                happiness = happiness - 10
                 energy = energy + 10
                 исправить()
                 print("сытость:", hunger, "\n счастье:", happiness, "\n энергия:", energy)
@@ -183,7 +200,8 @@ while igrat_programm == False:
         happiness = happiness - 5
         energy = energy - 5
         исправить()
-        print("ваше колличество очков:",points)
+        пропуск()
+        print("ваше колличество очков:", points)
 
 
     elif delat == "статистика":
@@ -191,6 +209,7 @@ while igrat_programm == False:
         happiness = happiness - 5
         energy = energy - 5
         исправить()
+        пропуск()
         print("сытость:", hunger, "\n счастье:", happiness, "\n энергия:", energy)
 
 
@@ -202,23 +221,40 @@ while igrat_programm == False:
         else:
             print("продолжаем")
     elif delat == "играть":
-        if energy > 10 and hunger > 10:
-            hunger = hunger - 10
-            happiness = happiness + 5
-            energy = energy - 10
-            исправить()
-            print("какую игру выберешь?")
-            delat_igra = input()
-            if delat_igra == "орёл и решка":
-                орел_решка()
+        igrat_igrushke = True
+        while igrat_igrushke == True:
+            if energy > 10 and hunger > 10:
+                hunger = hunger - 10
+                happiness = happiness + 5
+                energy = energy - 10
+                исправить()
+                print()
+                print()
+                print("какую игру выберешь?")
+                delat_igra = input()
+                if delat_igra == "орёл и решка" or delat_igra == "оир":
+                    пропуск()
+                    орел_решка()
 
-            elif delat_igra == "угадай число":
-                угадай_число()
+                elif delat_igra == "угадай число" or delat_igra == "уч":
+                    пропуск()
+                    угадай_число()
 
-            elif delat_igra == "камень ножницы бумага":
-                камень_ножницы_бумага()
+                elif delat_igra == "камень ножницы бумага" or delat_igra == "кмн":
+                    камень_ножницы_бумага()
+                elif delat_igra == "игры":
+                    пропуск()
+                    print("СПИСОК ИГР")
+                    print("орёл и решка (оир)")
+                    print("угадай число (уч)")
+                    print("камень ножнийы бумага (кмн)")
+                    print()
+                    print("выход")
+                elif delat_igra == "выход":
+                    igrat_igrushke = False
 
-            else:
-                print("неизвестная игра")
+                else:
+                    пропуск()
+                    print("неизвестная игра, список всех игр: игры")
     else:
         print("комманда не найдена, весь список комманд: список")
